@@ -1,4 +1,4 @@
-FROM php:latest
+FROM php:7.2
 
 # Updating and installing some dependences
 # TODO remove suggested packages.
