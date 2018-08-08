@@ -18,11 +18,13 @@ RUN apt-get update && \
     msmtp \
     git \
     nano \
+    gnupg \
     cron && \
     curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
     apt-get install -y nodejs && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install \
+    mcrypt \
     bcmath \
     pdo_mysql \
     xsl \
@@ -39,13 +41,11 @@ RUN apt-get update && \
 # Installing pecl PHP modules
 RUN pecl install \
     xdebug-2.6.0 \
-    mcrypt-1.0.1 \
     imagick-3.4.3 && \
     docker-php-ext-enable \
     xdebug \
-    imagick \
-    mcrypt
-
+    imagick
+    
 # Installing extra components
 RUN npm install -g grunt-cli && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \

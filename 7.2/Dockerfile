@@ -16,6 +16,8 @@ RUN apt-get update && \
     libmagickwand-dev \
     libmagickcore-dev \
     msmtp \
+    git \
+    nano \
     gnupg \
     cron && \
     curl -sL https://deb.nodesource.com/setup_9.x | bash - && \

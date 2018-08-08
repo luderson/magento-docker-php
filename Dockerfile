@@ -16,6 +16,8 @@ RUN apt-get update && \
     libmagickwand-dev \
     libmagickcore-dev \
     msmtp \
+    git \
+    nano \
     gnupg \
     cron && \
     curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
@@ -44,7 +46,7 @@ RUN pecl install \
     xdebug \
     imagick \
     mcrypt
-
+    
 # Installing extra components
 RUN npm install -g grunt-cli && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
