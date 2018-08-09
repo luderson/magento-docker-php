@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.2-fpm
 
 # Updating and installing some dependences
 # TODO remove suggested packages.
