@@ -19,6 +19,7 @@ RUN apt-get update && \
     git \
     nano \
     gnupg \
+    sudo \
     cron && \
     curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
     apt-get install -y nodejs && \
@@ -52,5 +53,7 @@ RUN npm install -g grunt-cli && \
     mkdir -p /var/www/.composer && \
     usermod -u 1000 www-data && \
     groupmod -g 1000 www-data && \
+    adduser www-data sudo && \
+    echo 'www-data ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     chown -R www-data:www-data /var/www/ && \
     chmod -R g+w /var/www/
