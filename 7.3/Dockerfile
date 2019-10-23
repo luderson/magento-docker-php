@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 # Updating and installing some dependences
 # TODO remove suggested packages.
@@ -13,6 +13,7 @@ RUN apt-get update && \
     libicu-dev \
     libmemcached-dev \
     zlib1g-dev \
+    libzip-dev \
     libmagickwand-dev \
     libmagickcore-dev \
     msmtp \
@@ -47,9 +48,8 @@ RUN pecl install \
     libsodium && \
     docker-php-ext-enable \
     xdebug \
-    imagick \
-    geoip
-    
+    imagick
+        
 # Installing extra components
 RUN npm install -g grunt-cli && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
