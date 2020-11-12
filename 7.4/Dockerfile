@@ -44,7 +44,7 @@ RUN apt-get update && \
 # Installing pecl PHP modules
 RUN pecl install \
     xdebug-2.9.8 \
-    imagick-3.4.3 \
+    imagick-3.4.4 \
     libsodium && \
     docker-php-ext-enable \
     xdebug \
@@ -52,7 +52,7 @@ RUN pecl install \
         
 # Installing extra components
 RUN npm install -g grunt-cli && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=1.10.17 && \
     mkdir -p /var/www/.composer && \
     usermod -u 1000 www-data && \
     groupmod -g 1000 www-data && \
