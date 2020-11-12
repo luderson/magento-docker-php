@@ -23,7 +23,7 @@ RUN apt-get update && \
     unzip \
     zip \
     libsodium-dev && \
-    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install \
@@ -42,7 +42,7 @@ RUN apt-get update && \
 
 # Installing pecl PHP modules
 RUN pecl install \
-    xdebug-2.7.2 \
+    xdebug-2.9.8 \
     imagick-3.4.3 \
     libsodium && \
     docker-php-ext-enable \
@@ -56,7 +56,5 @@ RUN npm install -g grunt-cli && \
     mkdir -p /var/www/.composer && \
     usermod -u 1000 www-data && \
     groupmod -g 1000 www-data && \
-    adduser www-data sudo && \
-    echo 'www-data ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     chown -R www-data:www-data /var/www/ && \
     chmod -R g+w /var/www/

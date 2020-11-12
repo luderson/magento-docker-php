@@ -3,8 +3,7 @@ FROM php:7.4-fpm
 # Updating and installing some dependences
 # TODO remove suggested packages.
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y \
+    apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
@@ -16,7 +15,6 @@ RUN apt-get update && \
     libzip-dev \
     libmagickwand-dev \
     libmagickcore-dev \
-    lsof \
     msmtp \
     git \
     nano \
@@ -24,11 +22,8 @@ RUN apt-get update && \
     cron \
     unzip \
     zip \
-    sed \
-    tar \
-    mariadb-client \
     libsodium-dev && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install \
@@ -49,7 +44,7 @@ RUN apt-get update && \
 # Installing pecl PHP modules
 RUN pecl install \
     xdebug-2.9.8 \
-    imagick-3.4.4 \
+    imagick-3.4.3 \
     libsodium && \
     docker-php-ext-enable \
     xdebug \

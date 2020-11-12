@@ -3,7 +3,6 @@ FROM php:7.3-fpm
 # Updating and installing some dependences
 # TODO remove suggested packages.
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -24,9 +23,9 @@ RUN apt-get update && \
     unzip \
     zip \
     libsodium-dev && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr && \
     docker-php-ext-install \
     bcmath \
     pdo_mysql \
