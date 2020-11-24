@@ -35,6 +35,8 @@ RUN apt-get update && \
     soap \
     gd \
     sockets \
+    simplexml \
+    xmlwriter \
     opcache && \
     apt-get clean -y && \
     apt-get autoclean -y && \
