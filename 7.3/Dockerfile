@@ -3,7 +3,7 @@ FROM php:7.3-fpm
 # Updating and installing some dependences
 # TODO remove suggested packages.
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install --no-install-recommends -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
@@ -22,10 +22,11 @@ RUN apt-get update && \
     cron \
     unzip \
     zip \
+    libwebp-dev \
     libsodium-dev && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-webp-dir=/usr && \
     docker-php-ext-install \
     bcmath \
     pdo_mysql \
@@ -35,9 +36,9 @@ RUN apt-get update && \
     soap \
     gd \
     sockets \
-    simplexml \
+    opcache \
     xmlwriter \
-    opcache && \
+    simplexml && \
     apt-get clean -y && \
     apt-get autoclean -y && \
     apt-get autoremove -y && \
@@ -45,8 +46,8 @@ RUN apt-get update && \
 
 # Installing pecl PHP modules
 RUN pecl install \
-    xdebug-2.9.8 \
-    imagick-3.4.3 \
+    xdebug-3.0.3 \
+    imagick-3.4.4 \
     libsodium && \
     docker-php-ext-enable \
     xdebug \
