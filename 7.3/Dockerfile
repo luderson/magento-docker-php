@@ -1,7 +1,6 @@
 FROM php:7.3-fpm
 
 # Updating and installing some dependences
-# TODO remove suggested packages.
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     libfreetype6-dev \
@@ -46,7 +45,7 @@ RUN apt-get update && \
 
 # Installing pecl PHP modules
 RUN pecl install \
-    xdebug-3.0.3 \
+    xdebug-3.0.4 \
     imagick-3.4.4 \
     libsodium && \
     docker-php-ext-enable \
