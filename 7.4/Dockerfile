@@ -30,6 +30,7 @@ RUN apt-get update && \
     docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
     docker-php-ext-install \
     bcmath \
+    sodium \
     # # ctype \
     # curl \
     # # dom \
@@ -45,7 +46,8 @@ RUN apt-get update && \
     xsl \
     zip \
     sockets \
-    opcache && \
+    opcache \
+    exif && \
     # xmlwriter && \
     apt-get clean -y && \
     apt-get autoclean -y && \
@@ -53,10 +55,11 @@ RUN apt-get update && \
     apt-get purge -y --auto-remove
 
 # Installing pecl PHP modules
+# touch /usr/local/etc/php/php.ini && \
+#     pear config-set php_ini /usr/local/etc/php/php.ini && \
 RUN pecl install \
-    xdebug-3.0.4 \
-    imagick-3.4.4 \
-    libsodium-2.0.23 && \
+    xdebug-3.1.1 \
+    imagick-3.4.4 && \
     docker-php-ext-enable \
     xdebug \
     imagick
